@@ -5,15 +5,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav">     
         <li class="nav-item">
-          <a class="nav-link <?= isActive('/') ?>" href="/">Home</a>
-        </li>
+          <a class="nav-link <?= isActive('/') ?>" href="/">All Posts</a>
+        </li>          
         <li class="nav-item">
-          <a class="nav-link <?= isActive('/about') ?>" href="/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link <?= isActive('/contact') ?>" href="/contact">Contact</a>
+          <a class="nav-link <?= isActive('/posts') ?>" href="/publish-post">Publish New Post</a>
         </li>  
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Md Anwar Hossain</a>

@@ -1,5 +1,5 @@
-<?php require('partials/head.blade.php') ?>
-<?php require('partials/nav.blade.php') ?>
+<?php require('Views/partials/head.blade.php') ?>
+<?php require('Views/partials/nav.blade.php') ?>
 
 
 <div class="container-fluid mt-3">
@@ -16,6 +16,11 @@
         <img src="public/images/<?= $post['image'] ?>" class="card-img-top" alt="" height="300">
         <div class="card-body">
             <h5 class="card-title"><?= $post['title'] ?></h5>
+            <form action="/post-store" method="POST">
+                <input type="text" name="name" value="<?= old('name')  ?>">
+                <input type="number" name="age" value="<?= old('age')  ?>">
+                <button type="submit">GO</button>
+            </form>
             <p class="card-text"><?= $post['body'] ?></p><hr>
             <p class="card-text"><?= $post['view'] ?> views <br>
                 Published at : <?= date('d F, Y', strtotime($post['published_at'])) ?><br>
@@ -32,4 +37,4 @@
 
 
 
-<?php require('partials/foot.blade.php') ?>
+<?php require('Views/partials/foot.blade.php') ?>

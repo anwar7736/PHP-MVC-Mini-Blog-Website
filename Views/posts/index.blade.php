@@ -1,5 +1,5 @@
-<?php require('partials/head.blade.php') ?>
-<?php require('partials/nav.blade.php') ?>
+<?php require('Views/partials/head.blade.php') ?>
+<?php require('Views/partials/nav.blade.php') ?>
 
 
 <div class="container-fluid mt-3">
@@ -18,7 +18,7 @@
                 Published at : <?= date('d F, Y', strtotime($post['published_at'])) ?><br>
                 Published By : <?= $post['name'] ?>
             </p>
-            <a href="/post?id=<?= $post['id'] ?>" class="btn btn-success">Read More...</a>
+            <a href="/post-show?id=<?= $post['id'] ?>" class="btn btn-success">Read More...</a>
         </div>`
     </div>  
     <?php } ?>
@@ -27,4 +27,4 @@
 
 
 
-<?php require('partials/foot.blade.php') ?>
+<?php require('Views/partials/foot.blade.php') ?>

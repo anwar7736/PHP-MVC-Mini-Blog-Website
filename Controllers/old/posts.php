@@ -7,8 +7,8 @@ $posts = $db->query("SELECT p.*, u.name FROM posts p
                         JOIN users u
                         ON p.user_id = u.id
                         ORDER BY p.published_at DESC"
-                    )->fetchAll();
+                    )->get();
 
 
-require('Views/posts.blade.php');
+return view('posts.index', compact('posts'));
 

@@ -3,7 +3,7 @@
 
 
 <div class="container-fluid mt-3 text-center text-danger">
-<h4><?= $code ?> | UNAUTHORIZED</h4>
+<h4><?= $code ?> | Unauthorized Action</h4>
 </div>
 
 

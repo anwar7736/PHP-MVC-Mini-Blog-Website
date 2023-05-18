@@ -13,28 +13,25 @@
     <hr>
    <div class="row">
     <div class="card col-md-6 offset-md-3">
-        <img src="public/images/<?= $post['image'] ?>" class="card-img-top" alt="" height="300">
+        <img src="<?= getFilePath('posts', $post['image'])?>" class="card-img-top" alt="" height="300">
         <div class="card-body">
             <h5 class="card-title"><?= $post['title'] ?></h5>
-            <form action="/post-store" method="POST">
-                <input type="text" name="name" value="<?= old('name')  ?>">
-                <input type="number" name="age" value="<?= old('age')  ?>">
-                <button type="submit">GO</button>
-            </form>
             <p class="card-text"><?= $post['body'] ?></p><hr>
             <p class="card-text"><?= $post['view'] ?> views <br>
                 Published at : <?= date('d F, Y', strtotime($post['published_at'])) ?><br>
                 Published By : <?= $post['name'] ?>
             </p>
-            <?php if($post['user_id'] == 1){ ?>
+            <?php if(Auth::user() && $post['user_id'] == Auth::id()){ ?>
                 <a href="javascript:void(0)" class="btn btn-success btn-sm" >Edit</a>
-                <a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this post?')">Delete</a>
+                <form action="/post-destroy" method="POST" id="delete-form" class="mt-2">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="id" value="<?= $post['id'] ?>">
+                    <button type="submit" class="btn btn-danger btn-sm delete-btn">Delete</button>
+                </form>
             <?php } ?>
         </div>
     </div>  
     </div>
 </div>
-
-
 
 <?php require('Views/partials/foot.blade.php') ?>

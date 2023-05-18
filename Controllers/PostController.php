@@ -52,20 +52,31 @@ class PostController extends Controller {
     
     public function edit()
     {
-        
+        dd("Edit");
        
     }    
     
     public function update()
     {
-        
+        dd("Update");
        
     }    
     
     public function destroy()
     {
-        
-       
+        extract($_POST);
+        $post = $this->db->query("SELECT *  FROM posts WHERE id = :id", ['id'=>$id])->findOrFail();
+        if($post && $post['user_id'] == Auth::id())
+        {
+            $deleted = $this->db->query("DELETE FROM posts WHERE id = :id", ['id'=>$id]);
+            if($deleted)
+            {
+                deleteFile('posts', $post['image']);
+                return redirect('/');
+            }
+        }
+
+        abort(Response::FORBIDDEN);
     }
 
 

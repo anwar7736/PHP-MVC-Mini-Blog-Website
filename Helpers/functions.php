@@ -36,12 +36,37 @@ function old($name)
     return $_POST[$name] ?? '';
 }
 
-function uploadFile($folder, $file)
+function uploadFile($folder = null, $file = null)
 {
     
 }
 
-function deleteFile($folder, $file)
+function deleteFile($folder = null, $file = null)
 {
-    
+    if(!empty($folder) && !empty($file))
+    {
+         $path = 'public/images/'.$folder.'/'.$file;
+         if(file_exists($path))
+         {
+            unlink($path);
+         }
+
+         return true;
+    }
+   
+}
+
+function getFilePath($folder = null, $file = null)
+{
+    if(!empty($folder) && !empty($file))
+    {
+        $path = 'public/images/'.$folder.'/'.$file;
+        if(file_exists($path))
+        {
+            return $path;
+        }
+
+        return 'public/images/default/no_image.jpg';
+    }
+   
 }

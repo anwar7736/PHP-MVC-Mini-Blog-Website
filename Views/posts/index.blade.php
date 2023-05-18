@@ -10,7 +10,7 @@
    <div class="row">
     <?php foreach($posts as $key => $post) { ?>
     <div class="card col-md-3">
-        <img src="public/images/<?= $post['image'] ?>" class="card-img-top" alt="" height="200">
+        <img src="<?= getFilePath('posts', $post['image']) ?>" class="card-img-top" alt="" height="200">
         <div class="card-body">
             <h5 class="card-title"><?= $post['title'] ?></h5>
             <p class="card-text"><?= substr($post['body'], 0, 250) ?></p><hr>

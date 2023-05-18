@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Logo</a>
@@ -12,14 +13,28 @@
         <li class="nav-item">
           <a class="nav-link <?= isActive('/posts') ?>" href="/publish-post">Publish New Post</a>
         </li>  
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Md Anwar Hossain</a>
+        <?php if(Auth::user()) { ?>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><?= Auth::name() ?></a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">My Profile</a></li>
             <li><a class="dropdown-item" href="#">Change Password</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li>
+              <form method="POST" action="/logout" id="logout-form">
+                <a class="dropdown-item" href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+              </form>
+            </li>
           </ul>
         </li>
+        <?php } else  {  ?>
+          <li class="nav-item">
+            <a class="nav-link <?= isActive('/login') ?>" href="/login">Login</a>
+          </li>            
+          <li class="nav-item">
+            <a class="nav-link <?= isActive('/register') ?>" href="/register">Register</a>
+          </li>  
+
+        <?php } ?>
       </ul>
     </div>
   </div>

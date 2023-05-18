@@ -3,7 +3,7 @@
 
 
 <div class="container-fluid mt-3 text-center text-danger">
-<h4><?= $code ?> | NOT FOUND</h4>
+<h4><?= $code ?> | Not Found</h4>
 </div>
 
 

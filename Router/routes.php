@@ -48,6 +48,7 @@
 
 //Post
 Route::get('/', 'PostController@index');
+Route::get('/my-post', 'PostController@myPost')->middleware('auth');
 Route::get('/post-create', 'PostController@create')->middleware('auth');
 Route::post('/post-store', 'PostController@store')->middleware('auth');
 Route::get('/post-show', 'PostController@show');
@@ -61,3 +62,6 @@ Route::post('/login', 'AuthController@login')->middleware('guest');
 Route::post('/logout', 'AuthController@logout')->middleware('auth');
 Route::get('/register', 'AuthController@registerView')->middleware('guest');
 Route::post('/register', 'AuthController@register')->middleware('guest');
+
+Route::get('/my-profile', 'AuthController@myProfile')->middleware('auth');
+Route::put('/update-profile', 'AuthController@updateProfile')->middleware('auth');

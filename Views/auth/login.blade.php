@@ -20,6 +20,9 @@
         <label class="form-check-label">
         <input class="form-check-input" type="checkbox" name="remember"> Remember me
         </label>
+    </div>    
+    <div class="form-check mb-3">
+        <a href="/register">I'm not registered?Register now</a> 
     </div>
     <button type="submit" class="btn btn-success">Login</button>
     </form> 

@@ -8,7 +8,7 @@
             <a href="/" class="btn btn-secondary btn-sm" >Back to Home</a>
     </div>    
     <div align="right">
-        <a href="/publish-post" class="btn btn-success btn-sm" >Publish New Post</a>
+        <a href="/post-create" class="btn btn-success btn-sm" >Publish New Post</a>
     </div>
     <hr>
    <div class="row">
@@ -22,7 +22,7 @@
                 Published By : <?= $post['name'] ?>
             </p>
             <?php if(Auth::user() && $post['user_id'] == Auth::id()){ ?>
-                <a href="javascript:void(0)" class="btn btn-success btn-sm" >Edit</a>
+                <a href="/post-edit?id=<?= $post['id'] ?>" class="btn btn-success btn-sm" >Edit</a>
                 <form action="/post-destroy" method="POST" id="delete-form" class="mt-2">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="id" value="<?= $post['id'] ?>">

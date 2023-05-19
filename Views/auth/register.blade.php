@@ -21,6 +21,9 @@
         <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" value="<?= old('password') ?>">
         <p class="text-danger"><?= $errors['password'] ?? '' ?></p>
     </div>
+    <div class="form-check mb-3">
+        <a href="/login">Already i have an account?Login</a> 
+    </div>
     <button type="submit" class="btn btn-success">Register</button>
     </form> 
 </div>

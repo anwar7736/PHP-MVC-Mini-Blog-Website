@@ -3,7 +3,7 @@
 
 
 <div class="container-fluid mt-3">
-  <h3 class="text-center text-danger">All Post List</h3><hr>
+  <h3 class="text-center text-danger">My Post List</h3><hr>
   <div class="mb-3" align="center">
     <a href="/post-create" class="btn btn-success btn-sm" >Publish New Post</a>
 </div>

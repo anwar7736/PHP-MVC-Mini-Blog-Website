@@ -36,9 +36,21 @@ function old($name)
     return $_POST[$name] ?? '';
 }
 
-function uploadFile($folder = null, $file = null)
+function uploadFile($folder, $file)
 {
-    
+        $image = $_FILES[$file]['name'];
+        if($image)
+        {
+            $extension = pathinfo($image, PATHINFO_EXTENSION);
+            $name = rand().'.'.$extension;
+            $upload_path = 'public/images/'.$folder.'/'.$name;
+            if(move_uploaded_file($_FILES[$file]['tmp_name'], $upload_path))
+            {
+                return $name;
+            }
+        }
+
+         return "";
 }
 
 function deleteFile($folder = null, $file = null)
@@ -58,15 +70,18 @@ function deleteFile($folder = null, $file = null)
 
 function getFilePath($folder = null, $file = null)
 {
+    $path = "public/images/default/no_image.jpg";
     if(!empty($folder) && !empty($file))
     {
         $path = 'public/images/'.$folder.'/'.$file;
         if(file_exists($path))
         {
-            return $path;
+             return $path;
         }
 
-        return 'public/images/default/no_image.jpg';
+        $path = 'public/images/default/no_image.jpg';
     }
+
+    return $path;
    
 }

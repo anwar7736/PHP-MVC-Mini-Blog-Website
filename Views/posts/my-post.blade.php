@@ -1,9 +1,15 @@
-<?php require('Views/partials/head.blade.php') ?>
-<?php require('Views/partials/nav.blade.php') ?>
+<?php require base_path('Views/partials/head.blade.php') ?>
+<?php require base_path('Views/partials/nav.blade.php') ?>
 
 
 <div class="container-fluid mt-3">
   <h3 class="text-center text-danger">My Post List</h3><hr>
+  <?php if(session('message')) { ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> <?= session('message') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>  
+  <?php } ?>
   <div class="mb-3" align="center">
     <a href="/post-create" class="btn btn-success btn-sm" >Publish New Post</a>
 </div>
@@ -27,4 +33,8 @@
 
 
 
-<?php require('Views/partials/foot.blade.php') ?>
+<?php require base_path('Views/partials/foot.blade.php') ?>
+
+<script>
+
+</script>

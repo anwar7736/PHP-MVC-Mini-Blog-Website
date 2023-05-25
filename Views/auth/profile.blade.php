@@ -1,9 +1,15 @@
-<?php include('./Views/partials/head.blade.php') ?>
-<?php include('./Views/partials/nav.blade.php') ?>
+<?php include base_path('Views/partials/head.blade.php') ?>
+<?php include base_path('Views/partials/nav.blade.php') ?>
 
 
 <div class="container-fluid mt-3 row card p-3 bg-light">
     <h3 class="text-center text-danger">My Profile</h3>
+    <?php if(session('message')) { ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> <?= session('message') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>  
+  <?php } ?>
     <div align="left">
         <a href="/" class="btn btn-secondary btn-sm" >Back to Home</a>
     </div>   
@@ -46,4 +52,4 @@
 
 
 
-<?php include('./Views/partials/foot.blade.php') ?>
+<?php include base_path('Views/partials/foot.blade.php') ?>

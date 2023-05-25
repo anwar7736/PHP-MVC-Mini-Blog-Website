@@ -1,5 +1,6 @@
 <?php
-$config = require('Config/config.php');
+$config = require base_path('Config/config.php');
+
 $db = new Database($config['database']);
 if(Auth::user())
 {
@@ -9,7 +10,9 @@ if(Auth::user())
 ?>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Logo</a>
+    <a class="navbar-brand" href="/">
+      <img src="<?= getFilePath('default', 'site_logo.png') ?>" alt="" height="50" width="70">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>

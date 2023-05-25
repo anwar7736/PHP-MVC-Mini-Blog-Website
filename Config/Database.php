@@ -42,25 +42,5 @@ class Database{
 
         return $result;
     }
-
-    public function insert($table, $data = [])
-    {
-
-    }    
-    
-    public function update($table, $data = [], $condition)
-    {
-
-    }    
-    
-    public function delete($table, $condition)
-    {
-
-    }    
-    
-    public function deleteMultiple($table, $column, $data = [])
-    {
-
-    }
     
 }

@@ -1,7 +1,7 @@
 <?php
-require('Config/Database.php');
-require('Middlewares/Middleware.php');
-require('Controllers/Auth/Auth.php');
+require base_path('Config/Database.php');
+require base_path('Middlewares/Middleware.php');
+require base_path('Controllers/Auth/Auth.php');
 class Route {
 
     public static $routes = [];
@@ -50,8 +50,8 @@ class Route {
 
     public static function router($uri, $method)
     {
-        $config = require('Config/config.php');
-        $db = new Database($config['database']);
+        // $config = require base_path('Config/config.php');
+        // $db = new Database($config['database']);
         $status = 0;
         foreach(static::$routes as $route)
         {
@@ -59,8 +59,8 @@ class Route {
             {
                 Middleware::resolve($route['middleware']);
                 $data = explode('@', $route['controller']);        
-                require('./Controllers/'.$data[0].'.php');
-                $object = new $data[0]($db);
+                require base_path('./Controllers/'.$data[0].'.php');
+                $object = new $data[0];
                 $method = $data[1];
                 $object->$method();
                 $status = 1;

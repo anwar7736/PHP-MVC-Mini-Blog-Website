@@ -1,15 +1,14 @@
 <?php
-require('Controllers/Controller.php');
-require('Validation/Validator.php');
+require base_path('Controllers/Controller.php');
+require base_path('Validation/Validator.php');
 
-use Controllers\Controller;
+// use Controllers\Controller;
 
 class AuthController extends Controller{
-    public $db;
     public $errors = [];
-    public function __construct($db)
+    public function __construct()
     {
-        $this->db = $db;
+        $this->db = parent::__construct();
     }
     
     public function loginView()
@@ -187,6 +186,8 @@ class AuthController extends Controller{
             ])->find();
 
             $_SESSION['user'] = $user;
+
+            session('message', 'Your profile has been updated successfully!');
 
             return redirect('/my-profile');
         }

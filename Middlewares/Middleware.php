@@ -1,6 +1,6 @@
 <?php
-require('AuthMiddleware.php');
-require('GuestMiddleware.php');
+require base_path('Middlewares/AuthMiddleware.php');
+require base_path('Middlewares/GuestMiddleware.php');
 class Middleware {
     public const MAP = [
         'auth' => AuthMiddleware::class,

@@ -1,12 +1,13 @@
 <?php
 session_start();
 date_default_timezone_set("Asia/Dhaka");
-// $_SESSION['user'] = 'Md Anwar Hossain';
-// session_destroy();
-require('Helpers/functions.php');
-require('Config/Response.php');
-require('Router/Route.php');
-require('Router/routes.php');
+
+const BASE_PATH = __DIR__.'/../';
+
+require BASE_PATH.'Helpers/functions.php';
+require base_path('Config/Response.php');
+require base_path('Router/Route.php');
+require base_path('Router/routes.php');
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];

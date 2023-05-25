@@ -1,15 +1,14 @@
 <?php
-require('Controllers/Controller.php');
-require('Validation/Validator.php');
+require base_path('Controllers/Controller.php');
+require base_path('Validation/Validator.php');
 
-use Controllers\Controller;
+// use Controllers\Controller;
 
 class PostController extends Controller {
-    public $db;
     public $errors = [];
-    public function __construct($db)
+    public function __construct()
     {
-        $this->db = $db;
+        $this->db = parent::__construct();
     }
 
     public function index()
@@ -60,6 +59,7 @@ class PostController extends Controller {
 
         if($created)
         {
+            session('message', 'Your post has been published now!');
             return redirect('/my-post');
         }
     }
@@ -149,6 +149,7 @@ class PostController extends Controller {
 
             if($updated)
             {
+                session('message', 'Your post has been updated now!');
                 return redirect('/my-post');
             }
        
@@ -167,6 +168,7 @@ class PostController extends Controller {
             if($deleted)
             {
                 deleteFile('posts', $post['image']);
+                session('message', 'Your post has been deleted now!');
                 return redirect('/my-post');
             }
         }
@@ -183,7 +185,6 @@ class PostController extends Controller {
                         ORDER BY p.published_at DESC",
                         ['user_id' => Auth::id()]
                     )->get();
-
 
         return view('posts.my-post', compact('posts'));
     }  

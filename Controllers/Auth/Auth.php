@@ -10,7 +10,7 @@ class Auth {
     }
     public static function attempt($email, $pass)
     {
-        $config = require('Config/config.php');
+        $config = require base_path('Config/config.php');
         $db = new Database($config['database']);
         $user = $db->query("SELECT * FROM users WHERE email = :email", [
             'email' => $email

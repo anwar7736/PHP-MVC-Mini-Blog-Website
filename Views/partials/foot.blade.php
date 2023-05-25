@@ -26,6 +26,21 @@
         $('.summernote').summernote({
           height: 200,
         });
+
+        setTimeout(() => {
+           remove_alert();
+        }, 5000);
+
+        $(document).on('click', 'button.btn-close', function(e){
+            remove_alert();
+        });
+
+        function remove_alert()
+        {
+            <?php destroy('message'); ?>
+            $(document).find('div.alert').remove();
+        }
+        
     });
 </script>
 </body>

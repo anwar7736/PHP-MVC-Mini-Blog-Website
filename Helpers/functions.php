@@ -23,7 +23,7 @@ function view($url, $data = [])
 {
     extract($data);
     $url = str_replace('.', '/', $url);
-    require('Views/'.$url.'.blade.php');
+    require base_path('Views/'.$url.'.blade.php');
 }
 
 function redirect($url)
@@ -43,7 +43,7 @@ function uploadFile($folder, $file)
         {
             $extension = pathinfo($image, PATHINFO_EXTENSION);
             $name = rand().'.'.$extension;
-            $upload_path = 'public/images/'.$folder.'/'.$name;
+            $upload_path = 'images/'.$folder.'/'.$name;
             if(move_uploaded_file($_FILES[$file]['tmp_name'], $upload_path))
             {
                 return $name;
@@ -57,7 +57,7 @@ function deleteFile($folder = null, $file = null)
 {
     if(!empty($folder) && !empty($file))
     {
-         $path = 'public/images/'.$folder.'/'.$file;
+         $path = 'images/'.$folder.'/'.$file;
          if(file_exists($path))
          {
             unlink($path);
@@ -70,18 +70,46 @@ function deleteFile($folder = null, $file = null)
 
 function getFilePath($folder = null, $file = null)
 {
-    $path = "public/images/default/no_image.jpg";
+    $path = "images/default/no_image.jpg";
     if(!empty($folder) && !empty($file))
     {
-        $path = 'public/images/'.$folder.'/'.$file;
+        $path = 'images/'.$folder.'/'.$file;
         if(file_exists($path))
         {
              return $path;
         }
 
-        $path = 'public/images/default/no_image.jpg';
+        $path = 'images/default/no_image.jpg';
     }
 
     return $path;
+   
+}
+
+function base_path($path)
+{
+    return BASE_PATH.$path;
+}
+
+function session($key, $value = '')
+{
+    if(!empty($value))
+    {
+        $_SESSION[$key] = $value;
+    }    
+    
+    else
+    {
+       return $_SESSION[$key] ?? '';
+    }
+   
+}
+
+function destroy($key)
+{
+    if(isset($_SESSION[$key]))
+    {
+        unset($_SESSION[$key]);
+    }    
    
 }

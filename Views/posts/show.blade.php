@@ -1,5 +1,5 @@
-<?php require('Views/partials/head.blade.php') ?>
-<?php require('Views/partials/nav.blade.php') ?>
+<?php require base_path('Views/partials/head.blade.php') ?>
+<?php require base_path('Views/partials/nav.blade.php') ?>
 
 
 <div class="container-fluid mt-3">
@@ -34,4 +34,4 @@
     </div>
 </div>
 
-<?php require('Views/partials/foot.blade.php') ?>
+<?php require base_path('Views/partials/foot.blade.php') ?>

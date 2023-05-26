@@ -1,13 +1,15 @@
 <?php
-// include('Config/Database.php');
-// namespace Controllers\Auth;
+
+use Config\App;
+use Config\Database;
 
 class Auth {
     public static $db;
     public function __construct()
     {
-      
+      static::$db = App::make('Config\Database');
     }
+
     public static function attempt($email, $pass)
     {
         $config = require base_path('Config/config.php');

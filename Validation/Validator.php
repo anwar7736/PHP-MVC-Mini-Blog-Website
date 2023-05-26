@@ -1,5 +1,5 @@
 <?php
-
+namespace Validation;
 
 class Validator {
     public static function string($string, $min = 1, $max = INF)

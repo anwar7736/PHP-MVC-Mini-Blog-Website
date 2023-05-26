@@ -2,7 +2,9 @@
 require base_path('Controllers/Controller.php');
 require base_path('Validation/Validator.php');
 
-// use Controllers\Controller;
+use Controllers\Controller;
+use Validation\Validator;
+use Config\Response;
 
 class PostController extends Controller {
     public $errors = [];

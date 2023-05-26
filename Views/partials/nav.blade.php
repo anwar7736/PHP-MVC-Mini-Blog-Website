@@ -1,13 +1,3 @@
-<?php
-$config = require base_path('Config/config.php');
-
-$db = new Database($config['database']);
-if(Auth::user())
-{
-  $total_posts = count($db->raw("SELECT * FROM posts WHERE user_id = :user_id", ['user_id'=>Auth::id()])->fetchAll());
-}
-
-?>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
@@ -23,7 +13,7 @@ if(Auth::user())
       </li>        
       <?php if(Auth::user()) { ?>
       <li class="nav-item">
-        <a class="nav-link <?= isActive('/my-post') ?>" href="/my-post">My Posts (<?= $total_posts ?>)</a>
+        <a class="nav-link <?= isActive('/my-post') ?>" href="/my-post">My Posts (<?= auth_post_count() ?>)</a>
       </li>    
       <?php } ?>      
       <li class="nav-item">
@@ -34,7 +24,7 @@ if(Auth::user())
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><?= Auth::name() ?></a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/my-profile">My Profile</a></li>
-            <li><a class="dropdown-item" href="/my-post">My Posts (<?= $total_posts ?>)</a></li>
+            <li><a class="dropdown-item" href="/my-post">My Posts (<?= auth_post_count() ?>)</a></li>
             <li>
               <form method="POST" action="/logout" id="logout-form">
                 <a class="dropdown-item" href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

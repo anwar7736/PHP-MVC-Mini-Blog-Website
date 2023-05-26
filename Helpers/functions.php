@@ -1,5 +1,9 @@
 <?php
 
+use Config\App;
+use Config\Database;
+use Config\Response;
+
 function dd($value)
 {
     echo "<pre>";
@@ -112,4 +116,14 @@ function destroy($key)
         unset($_SESSION[$key]);
     }    
    
+}
+
+function auth_post_count()
+{
+    $db = App::make('Config\Database');
+    $total_posts = $db->raw("SELECT * FROM posts WHERE user_id = :user_id", 
+                    ['user_id'=>Auth::id()])->fetchAll();
+
+
+    return count($total_posts);
 }

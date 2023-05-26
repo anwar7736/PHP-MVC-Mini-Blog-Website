@@ -1,7 +1,10 @@
 <?php
-require base_path('Config/Database.php');
+namespace Router;
+use Middlewares\Middleware;
+
 require base_path('Middlewares/Middleware.php');
 require base_path('Controllers/Auth/Auth.php');
+
 class Route {
 
     public static $routes = [];
@@ -50,8 +53,6 @@ class Route {
 
     public static function router($uri, $method)
     {
-        // $config = require base_path('Config/config.php');
-        // $db = new Database($config['database']);
         $status = 0;
         foreach(static::$routes as $route)
         {

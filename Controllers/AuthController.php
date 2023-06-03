@@ -134,7 +134,7 @@ class AuthController extends Controller{
         
         if(!empty($old_password))         
         {
-            if(!password_verify($old_password, Auth::password()))
+            if(!Hash::check($old_password, Auth::password()))
             {
                 $this->errors['old_password'] = 'Old password does not match!';
             }
@@ -152,11 +152,11 @@ class AuthController extends Controller{
         if(!empty($this->errors))
         {
 
-            $_SESSION['errors'] = $this->errors;
+            session('errors', $this->errors);
             return redirect('/my-profile');
         }
 
-        unset($_SESSION['errors']);
+        destroy('errors');
 
         $image_name = Auth::image();
         $password = Auth::password();
@@ -169,7 +169,7 @@ class AuthController extends Controller{
 
         if(!empty($new_password))
         {
-            $password = password_hash($new_password, PASSWORD_DEFAULT);
+            $password =  Hash::make($new_password);
         }
 
         $updated = $this->db->query("UPDATE users SET name = :name, password = :password, image = :image WHERE id = :id", [
@@ -185,7 +185,7 @@ class AuthController extends Controller{
                 'id' => Auth::id(),
             ])->find();
 
-            $_SESSION['user'] = $user;
+            session('user', $user);
 
             session('message', 'Your profile has been updated successfully!');
 

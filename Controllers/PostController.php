@@ -126,11 +126,11 @@ class PostController extends Controller {
             if(!empty($this->errors))
             {
 
-                $_SESSION['errors'] = $this->errors;
+                session('errors', $this->errors);
                 return redirect('post-edit?id='.$id);
             }
 
-            unset($_SESSION['errors']);
+            destroy('errors');
 
             $image_name = $post['image'];
 

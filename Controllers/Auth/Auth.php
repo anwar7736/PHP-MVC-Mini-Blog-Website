@@ -1,7 +1,9 @@
 <?php
+// namespace Controllers\Auth;  
 
 use Config\App;
 use Config\Database;
+use Config\Hash;
 
 class Auth {
     public static $db;
@@ -18,7 +20,7 @@ class Auth {
             'email' => $email
         ])->find();
 
-        if($user && password_verify($pass, $user['password']))
+        if($user && Hash::check($pass, $user['password']))
         {
             $_SESSION['user'] = $user;
             return true;

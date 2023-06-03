@@ -1,10 +1,8 @@
 <?php
-require base_path('Controllers/Controller.php');
-require base_path('Validation/Validator.php');
 
 use Controllers\Controller;
 use Validation\Validator;
-use Config\Response;
+use Config\Hash;
 
 class AuthController extends Controller{
     public $errors = [];
@@ -103,7 +101,7 @@ class AuthController extends Controller{
         $user = $this->db->query("INSERT INTO users (name, email, password) VALUES(:name, :email, :password)", [
             'name' => $name,
             'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT),
+            'password' => Hash::make($password),
         ]);
 
         if($user)

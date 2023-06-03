@@ -1,0 +1,20 @@
+{
+    "name": "ac/php-mvc-blog",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "anwar7736",
+            "email": "anwarhossain7736@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Config\\": "Config/",
+            "Controllers\\": "Controllers/",
+            "Middlewares\\": "Middlewares/",
+            "Router\\": "Router/",
+            "Validation\\": "Validation/"
+        }
+    }
+}

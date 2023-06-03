@@ -1,7 +1,5 @@
 <?php
-require base_path('Controllers/Controller.php');
-require base_path('Validation/Validator.php');
-
+// namespace Controllers;
 use Controllers\Controller;
 use Validation\Validator;
 use Config\Response;

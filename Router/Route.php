@@ -2,7 +2,6 @@
 namespace Router;
 use Middlewares\Middleware;
 
-require base_path('Middlewares/Middleware.php');
 require base_path('Controllers/Auth/Auth.php');
 
 class Route {

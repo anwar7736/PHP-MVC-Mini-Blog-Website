@@ -1,8 +1,6 @@
 <?php
 namespace Middlewares;
 
-require base_path('Middlewares/AuthMiddleware.php');
-require base_path('Middlewares/GuestMiddleware.php');
 use Middlewares\AuthMiddleware;
 use Middlewares\GuestMiddleware;
 

@@ -45,7 +45,7 @@
         <p class="text-danger"><?= $_SESSION['errors']['new_password'] ?? '' ?></p>
     </div> 
     <div align="center">
-        <button type="submit" class="btn btn-success px-md-4">Publish Now</button>
+        <button type="submit" class="btn btn-success px-md-4">Update    </button>
     </div>
     </form> 
 </div>

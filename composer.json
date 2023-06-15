@@ -10,11 +10,9 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Config\\": "Config/",
-            "Controllers\\": "Controllers/",
-            "Middlewares\\": "Middlewares/",
-            "Router\\": "Router/",
-            "Validation\\": "Validation/"
+            "Config\\": "config/",
+            "App\\": "app/",
+            "Routes\\": "routes/"
         }
     }
 }
